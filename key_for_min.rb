@@ -3,17 +3,14 @@
 
 require 'pry'
 
-def key_for_min_value(name_hash)
-  if name_hash.empty?
-    return nil
-  end
-  return_name = ""
-  lowest_value = name_hash.first[1]
-  name_hash.each_key{|key|
-    if(name_hash[key] <= lowest_value)
-      return_name = key
-      lowest_value = name_hash[key]
+def key_for_min_value(hash)
+  lowest_key = nil
+  lowest_value = nil
+  hash.each do |k, v|
+    if lowest_value == nil || v < lowest_value
+      lowest_value = v
+      lowest_key = k
     end
-  }
-  return_name
+  end
+  lowest_key
 end
